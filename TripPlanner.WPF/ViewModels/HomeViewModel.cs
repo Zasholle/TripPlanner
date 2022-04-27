@@ -7,11 +7,12 @@ namespace TripPlanner.WPF.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        public ICommand NavigateLoginCommand { get; }
+        public string Username { get; set; }
+        public ICommand LogOutCommand { get; }
 
         public HomeViewModel( NavigationStore navigationStore)
         {
-            NavigateLoginCommand = new NavigateCommand<LoginViewModel>(
+            LogOutCommand = new NavigateCommand<LoginViewModel>(
                 new NavigationService<LoginViewModel>(
                     navigationStore, () => new LoginViewModel(navigationStore)));
         }

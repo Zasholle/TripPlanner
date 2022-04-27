@@ -9,16 +9,16 @@ namespace TripPlanner.WPF.ViewModels
     {
         public string? Username { get; set; }
         public string? Password { get; set; }
-        public ICommand NavigateHomeCommand { get; }
-        public ICommand NavigateRegisterCommand { get; }
+        public ICommand LoginCommand { get; }
+        public ICommand RegisterCommand { get; }
 
         public LoginViewModel(NavigationStore navigationStore)
         {
-            NavigateHomeCommand = new NavigateCommand<HomeViewModel>(
+            LoginCommand = new NavigateCommand<HomeViewModel>(
                 new NavigationService<HomeViewModel>(
                     navigationStore, () => new HomeViewModel(navigationStore)));
 
-            NavigateRegisterCommand = new NavigateCommand<RegistryViewModel>(
+            RegisterCommand = new NavigateCommand<RegistryViewModel>(
                 new NavigationService<RegistryViewModel>(
                     navigationStore, () => new RegistryViewModel(navigationStore)));
         }
