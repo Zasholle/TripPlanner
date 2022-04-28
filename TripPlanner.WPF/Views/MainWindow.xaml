@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:TripPlanner.WPF.ViewModels"
         xmlns:views="clr-namespace:TripPlanner.WPF.Views"
+        xmlns:components="clr-namespace:TripPlanner.WPF.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <ContentControl 
@@ -18,6 +19,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:RegistryViewModel}">
                 <views:RegistryView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:LayoutViewModel}">
+                <components:Layout />
             </DataTemplate>
         </ContentControl.Resources>
     </ContentControl>

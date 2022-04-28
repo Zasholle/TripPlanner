@@ -1,8 +1,6 @@
-﻿using TripPlanner.WPF.ViewModels;
-
-namespace TripPlanner.WPF.Services
+﻿namespace TripPlanner.WPF.Services
 {
-    public interface INavigationService<T> where T : ViewModelBase
+    public interface INavigationService
     {
         void Navigate();
     }

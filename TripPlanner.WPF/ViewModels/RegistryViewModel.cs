@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
 using TripPlanner.WPF.Commands;
 using TripPlanner.WPF.Services;
-using TripPlanner.WPF.Stores;
 
 namespace TripPlanner.WPF.ViewModels
 {
@@ -9,12 +8,9 @@ namespace TripPlanner.WPF.ViewModels
     {
         public ICommand NavigateLoginCommand { get; }
 
-        public RegistryViewModel(NavigationStore navigationStore)
+        public RegistryViewModel(INavigationService loginNavigationService)
         {
-            NavigateLoginCommand = new NavigateCommand<LoginViewModel>(
-                new NavigationService<LoginViewModel>(
-                    navigationStore, () => new LoginViewModel(navigationStore)));
-
+            NavigateLoginCommand = new NavigateCommand(loginNavigationService);
         }
     }
 }

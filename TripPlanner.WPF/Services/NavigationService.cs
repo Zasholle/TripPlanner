@@ -4,7 +4,8 @@ using TripPlanner.WPF.ViewModels;
 
 namespace TripPlanner.WPF.Services
 {
-    public class NavigationService<T> where T : ViewModelBase
+    public class NavigationService<T> : INavigationService
+        where T : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
         private readonly Func<T> _createViewModel;

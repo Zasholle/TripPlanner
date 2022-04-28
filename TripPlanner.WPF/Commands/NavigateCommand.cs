@@ -1,13 +1,12 @@
 ﻿using TripPlanner.WPF.Services;
-using TripPlanner.WPF.ViewModels;
 
 namespace TripPlanner.WPF.Commands
 {
-    public class NavigateCommand<T> : CommandBase where T : ViewModelBase
+    public class NavigateCommand : CommandBase
     {
-        private readonly NavigationService<T> _navigationService;
+        private readonly INavigationService _navigationService;
 
-        public NavigateCommand(NavigationService<T> navigationService)
+        public NavigateCommand(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
