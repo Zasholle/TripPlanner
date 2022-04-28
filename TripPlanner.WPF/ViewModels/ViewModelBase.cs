@@ -24,6 +24,9 @@ namespace TripPlanner.WPF.ViewModels
             return true;
         }
 
-        public virtual void Dispose(){ }
+        public virtual void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
     }
 }

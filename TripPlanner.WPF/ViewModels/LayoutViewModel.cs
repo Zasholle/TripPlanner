@@ -17,7 +17,7 @@ namespace TripPlanner.WPF.ViewModels
         {
             NavigationBarViewModel.Dispose();
             ContentViewModel.Dispose();
-
+            GC.SuppressFinalize(this);
             base.Dispose();
         }
     }

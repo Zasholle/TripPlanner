@@ -51,14 +51,14 @@ namespace TripPlanner.WPF
                 () => CreateNavigationBarViewModel(serviceProvider));
         }
 
-        private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
+        private static INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
             return new NavigationService<LoginViewModel>(
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 serviceProvider.GetRequiredService<LoginViewModel>);
         }
 
-        private INavigationService CreateRegistryNavigationService(IServiceProvider serviceProvider)
+        private static INavigationService CreateRegistryNavigationService(IServiceProvider serviceProvider)
         {
             return new NavigationService<RegistryViewModel>(
                 serviceProvider.GetRequiredService<NavigationStore>(),

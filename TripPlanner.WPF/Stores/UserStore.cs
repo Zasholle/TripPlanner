@@ -5,9 +5,9 @@ namespace TripPlanner.WPF.Stores
 {
     public class UserStore
     {
-        private User _currentUser;
+        private User? _currentUser;
 
-        public User CurrentUser
+        public User? CurrentUser
         {
             get => _currentUser;
             set
@@ -19,7 +19,7 @@ namespace TripPlanner.WPF.Stores
 
         public bool IsLoggedIn => CurrentUser != null;
 
-        public event Action CurrentUserChanged;
+        public event Action? CurrentUserChanged;
 
         public void Logout()
         {

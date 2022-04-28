@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using TripPlanner.Domain.Exceptions;
 using TripPlanner.Domain.Models;
+using PasswordVerificationResult = Microsoft.AspNetCore.Identity.PasswordVerificationResult;
 
 namespace TripPlanner.Domain.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserService _userService;
-        private readonly IPasswordHasher _passwordHasher;
+        private readonly IPasswordHasher<User> _passwordHasher;
 
-        public AuthenticationService(IUserService userService, IPasswordHasher passwordHasher)
+        public AuthenticationService(IUserService userService, IPasswordHasher<User> passwordHasher)
         {
             _userService = userService;
             _passwordHasher = passwordHasher;
@@ -40,16 +41,15 @@ namespace TripPlanner.Domain.Services
 
             if (result == RegistrationResult.Success)
             {
-                var hashedPassword = _passwordHasher.HashPassword(password);
-
                 var user = new User
                 {
                     Email = email,
                     Username = username,
-                    Password = hashedPassword,
                     Phone = phone,
                     FullName = fullName
                 };
+
+                user.Password = _passwordHasher.HashPassword(user, password);
 
                 await _userService.Create(user);
             }
@@ -66,7 +66,7 @@ namespace TripPlanner.Domain.Services
                 throw new UserNotFoundException(username);
             }
 
-            var passwordResult = _passwordHasher.VerifyHashedPassword(storedUser.Password, password);
+            var passwordResult = _passwordHasher.VerifyHashedPassword(storedUser, storedUser.Password, password);
 
             if (passwordResult != PasswordVerificationResult.Success)
             {
