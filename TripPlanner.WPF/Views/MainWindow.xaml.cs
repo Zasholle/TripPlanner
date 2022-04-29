@@ -1,4 +1,4 @@
-﻿namespace TripPlanner.WPF
+﻿namespace TripPlanner.WPF.Views
 {
     public partial class MainWindow
     {

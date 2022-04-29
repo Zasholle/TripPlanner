@@ -3,7 +3,7 @@ using TripPlanner.Domain.Exceptions;
 using TripPlanner.Domain.Models;
 using PasswordVerificationResult = Microsoft.AspNetCore.Identity.PasswordVerificationResult;
 
-namespace TripPlanner.Domain.Services
+namespace TripPlanner.Domain.Services.Authentication
 {
     public class AuthenticationService : IAuthenticationService
     {
