@@ -1,92 +1,57 @@
-﻿using System;
-using System.Windows;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Windows;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using TripPlanner.Domain.Models;
-using TripPlanner.Domain.Services;
-using TripPlanner.Domain.Services.Authentication;
 using TripPlanner.EntityFramework;
-using TripPlanner.EntityFramework.Services;
-using TripPlanner.WPF.Authenticators;
-using TripPlanner.WPF.Services;
-using TripPlanner.WPF.Stores;
-using TripPlanner.WPF.ViewModels;
 using TripPlanner.WPF.Views;
+using Microsoft.Extensions.Hosting;
+using TripPlanner.WPF.HostBuilders;
+using TripPlanner.WPF.Services;
 
 namespace TripPlanner.WPF
 {
     public partial class App
     {
-        private readonly ServiceProvider _serviceProvider;
-
+        private readonly IHost _host;
         public App()
         {
-            IServiceCollection services = new ServiceCollection();
-            services.AddSingleton<UserStore>();
-            services.AddSingleton<NavigationStore>();
-            services.AddSingleton<IAuthenticator, Authenticator>();
-            services.AddSingleton<IUserService, UserDataService>();
-            services.AddDbContext<TripPlannerDbContext>();
-            services.AddSingleton(new TripPlannerDbContextFactory());
-            services.AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>();
-            services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            _host = CreateHostBuilder().Build();
+        }
 
-            services.AddSingleton(CreateHomeNavigationService);
-
-            services.AddTransient(s => new HomeViewModel(CreateLoginNavigationService(s)));
-            services.AddTransient(s => new RegistryViewModel(s.GetRequiredService<IAuthenticator>(), CreateLoginNavigationService(s)));
-            services.AddTransient(s => new LoginViewModel(
-                s.GetRequiredService<IAuthenticator>(),
-                CreateHomeNavigationService(s), CreateRegistryNavigationService(s)));
-            services.AddSingleton<MainViewModel>();
-
-            services.AddSingleton(s => new MainWindow
-            {
-                DataContext = s.GetRequiredService<MainViewModel>()
-            });
-
-            _serviceProvider = services.BuildServiceProvider();
+        public static IHostBuilder CreateHostBuilder(string[]? args = null)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .AddDbContext()
+                .AddServices()
+                .AddStores()
+                .AddViewModels()
+                .AddViews();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
+            _host.Start();
+            var contextFactory = _host.Services.GetRequiredService<TripPlannerDbContextFactory>();
+            
+            using (var context = contextFactory.CreateDbContext())
+            {
+                context.Database.Migrate();
+            }
+
+            var initialNavigationService = _host.Services.GetRequiredService<INavigationService>();
             initialNavigationService.Navigate();
 
-            MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-            MainWindow.Show();
+            Window window = _host.Services.GetRequiredService<MainWindow>();
+            window.Show();
 
             base.OnStartup(e);
         }
 
-        private INavigationService CreateHomeNavigationService(IServiceProvider serviceProvider)
+        protected override async void OnExit(ExitEventArgs e)
         {
-            return new LayoutNavigationService<HomeViewModel>(
-                serviceProvider.GetRequiredService<NavigationStore>(),
-                serviceProvider.GetRequiredService<HomeViewModel>,
-                () => CreateNavigationBarViewModel(serviceProvider));
-        }
+            await _host.StopAsync();
+            _host.Dispose();
 
-        private static INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
-        {
-            return new NavigationService<LoginViewModel>(
-                serviceProvider.GetRequiredService<NavigationStore>(),
-                serviceProvider.GetRequiredService<LoginViewModel>);
-        }
-
-        private static INavigationService CreateRegistryNavigationService(IServiceProvider serviceProvider)
-        {
-            return new NavigationService<RegistryViewModel>(
-                serviceProvider.GetRequiredService<NavigationStore>(),
-                serviceProvider.GetRequiredService<RegistryViewModel>);
-        }
-
-        private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
-        {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),
-                CreateHomeNavigationService(serviceProvider),
-                CreateRegistryNavigationService(serviceProvider),
-                CreateLoginNavigationService(serviceProvider));
+            base.OnExit(e);
         }
     }
 }

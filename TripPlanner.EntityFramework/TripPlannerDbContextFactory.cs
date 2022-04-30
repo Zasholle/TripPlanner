@@ -1,14 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 
 namespace TripPlanner.EntityFramework
 {
-    public class TripPlannerDbContextFactory : IDesignTimeDbContextFactory<TripPlannerDbContext>
+    public class TripPlannerDbContextFactory
     {
-        public TripPlannerDbContext CreateDbContext(string[]? args = null)
+        private readonly Action<DbContextOptionsBuilder> _configureDbContext;
+
+        public TripPlannerDbContextFactory(Action<DbContextOptionsBuilder> configureDbContext)
+        {
+            _configureDbContext = configureDbContext;
+        }
+
+        public TripPlannerDbContext CreateDbContext()
         {
             var options = new DbContextOptionsBuilder<TripPlannerDbContext>();
-            options.UseSqlServer("Server=localhost;Database=TripPlannerDB;Trusted_Connection=True;");
+
+            _configureDbContext(options);
 
             return new TripPlannerDbContext(options.Options);
         }
