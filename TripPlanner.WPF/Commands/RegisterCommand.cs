@@ -35,12 +35,12 @@ namespace TripPlanner.WPF.Commands
             try
             {
                 var registrationResult = await _authenticator.Register(
-                    _registerViewModel.Email,
+                    _registerViewModel.Email!,
                     _registerViewModel.Phone,
-                    _registerViewModel.FullName,
-                    _registerViewModel.Username,
-                    _registerViewModel.Password,
-                    _registerViewModel.ConfirmPassword);
+                    _registerViewModel.FullName!,
+                    _registerViewModel.Username!,
+                    _registerViewModel.Password!,
+                    _registerViewModel.ConfirmPassword!);
 
                 switch (registrationResult)
                 {

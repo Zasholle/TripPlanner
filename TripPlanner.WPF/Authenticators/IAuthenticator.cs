@@ -7,7 +7,7 @@ namespace TripPlanner.WPF.Authenticators
 {
     public interface IAuthenticator
     {
-        User CurrentUser { get; }
+        User? CurrentUser { get; }
         bool IsLoggedIn { get; }
 
         event Action StateChanged;
@@ -23,7 +23,7 @@ namespace TripPlanner.WPF.Authenticators
         /// <param name="confirmPassword">The user's confirmed password.</param>
         /// <returns>The result of the registration.</returns>
         /// <exception cref="Exception">Thrown if the registration fails.</exception>
-        Task<RegistrationResult> Register(string? email, long phone, string? fullName, string? username, string? password, string? confirmPassword);
+        Task<RegistrationResult> Register(string email, long phone, string fullName, string username, string password, string confirmPassword);
 
         /// <summary>
         /// Login to the application.
@@ -33,7 +33,7 @@ namespace TripPlanner.WPF.Authenticators
         /// <exception cref="Domain.Exceptions.UserNotFoundException">Thrown if the user does not exist.</exception>
         /// <exception cref="Domain.Exceptions.InvalidPasswordException">Thrown if the password is invalid.</exception>
         /// <exception cref="Exception">Thrown if the login fails.</exception>
-        Task Login(string? username, string? password);
+        Task Login(string username, string password);
         void Logout();
     }
 }

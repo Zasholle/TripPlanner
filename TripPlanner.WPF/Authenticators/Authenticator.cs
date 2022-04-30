@@ -17,12 +17,9 @@ namespace TripPlanner.WPF.Authenticators
             _userStore = userStore;
         }
 
-        public User CurrentUser
+        public User? CurrentUser
         {
-            get
-            {
-                return _userStore.CurrentUser;
-            }
+            get => _userStore.CurrentUser;
             private set
             {
                 _userStore.CurrentUser = value;
@@ -30,9 +27,9 @@ namespace TripPlanner.WPF.Authenticators
             }
         }
 
-        public bool IsLoggedIn => CurrentUser != null;
+        public bool IsLoggedIn => true;
 
-        public event Action StateChanged;
+        public event Action? StateChanged;
 
         public async Task Login(string username, string password)
         {
