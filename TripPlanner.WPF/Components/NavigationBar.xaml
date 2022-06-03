@@ -46,7 +46,9 @@
 
         <TextBlock
             Grid.Column="0"
-            Text="Navigation Demo" 
+            Text="Trip Planner"
+            FontSize="18"
+            FontFamily="Arial"
             Foreground="AliceBlue"/>
 
         <Button

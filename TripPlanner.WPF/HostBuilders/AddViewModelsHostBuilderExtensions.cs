@@ -14,7 +14,7 @@ namespace TripPlanner.WPF.HostBuilders
         {
             host.ConfigureServices((_, services) =>
             {
-                services.AddSingleton(CreateHomeNavigationService);
+                services.AddSingleton(CreateLoginNavigationService);
 
                 services.AddTransient(s => new HomeViewModel(CreateLoginNavigationService(s)));
                 services.AddTransient(s => new RegistryViewModel(s.GetRequiredService<IAuthenticator>(), CreateLoginNavigationService(s)));

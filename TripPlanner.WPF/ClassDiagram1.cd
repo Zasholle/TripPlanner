@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="TripPlanner.WPF.Authenticators.Authenticator">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAQAAIAAgABAAAAAAASAAAAACA=</HashCode>
+      <FileName>Authenticators\Authenticator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TripPlanner.WPF.Commands.AsyncCommandBase">
+    <Position X="7.25" Y="1.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAADgAQAAEQAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\AsyncCommandBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TripPlanner.WPF.Commands.LoginCommand">
+    <Position X="11" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAIEAAAAgAAAAEAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\LoginCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.Commands.RegisterCommand">
+    <Position X="10.75" Y="3.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAIEAAAAgAAAAAAAAAAAAAAABAAEA=</HashCode>
+      <FileName>Commands\RegisterCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.ViewModels.ViewModelBase">
+    <Position X="0.5" Y="5.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TripPlanner.WPF.ViewModels.LoginViewModel">
+    <Position X="4.5" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAQAAAAAAAAAAQAAAAAAABAAAACCAAIAAACAAAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.Views.LoginView">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TripPlanner.WPF.Stores.UserStore">
+    <Position X="9.25" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAEAAAAIAAAAAAAAAAAECAAAAAAA=</HashCode>
+      <FileName>Stores\UserStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.Services.NavigationService&lt;T&gt;">
+    <Position X="3.75" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAAAAA=</HashCode>
+      <FileName>Services\NavigationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TripPlanner.WPF.Stores.NavigationStore">
+    <Position X="6.75" Y="9.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAIEAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Stores\NavigationStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.HostBuilders.AddDbContextHostBuilderExtensions">
+    <Position X="1.5" Y="13.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HostBuilders\AddDbContextHostBuilderExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.HostBuilders.AddServicesHostBuilderExtensions">
+    <Position X="4" Y="13.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HostBuilders\AddServicesHostBuilderExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.HostBuilders.AddStoresHostBuilderExtensions">
+    <Position X="1.5" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>HostBuilders\AddStoresHostBuilderExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.HostBuilders.AddViewModelsHostBuilderExtensions">
+    <Position X="6.5" Y="13.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIAAAAAAAAAAAAAAAAAABAAgAAAABAAAAAAAAAA=</HashCode>
+      <FileName>HostBuilders\AddViewModelsHostBuilderExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TripPlanner.WPF.HostBuilders.AddViewsHostBuilderExtensions">
+    <Position X="4" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>HostBuilders\AddViewsHostBuilderExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TripPlanner.WPF.Authenticators.IAuthenticator">
+    <Position X="4.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAIAAAABAAAAAAASAAAAACA=</HashCode>
+      <FileName>Authenticators\IAuthenticator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TripPlanner.WPF.Services.INavigationService">
+    <Position X="1.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\INavigationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

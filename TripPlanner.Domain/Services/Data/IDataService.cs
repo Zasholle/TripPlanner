@@ -1,4 +1,4 @@
-﻿namespace TripPlanner.Domain.Services;
+﻿namespace TripPlanner.Domain.Services.Data;
 
 public interface IDataService<T>
 {

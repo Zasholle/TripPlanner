@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TripPlanner.Domain.Models;
-using TripPlanner.Domain.Services;
+using TripPlanner.Domain.Services.Data;
 
 namespace TripPlanner.EntityFramework.Services
 {

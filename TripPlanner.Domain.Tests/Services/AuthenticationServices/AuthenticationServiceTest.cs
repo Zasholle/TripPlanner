@@ -4,8 +4,8 @@ using Moq;
 using NUnit.Framework;
 using TripPlanner.Domain.Exceptions;
 using TripPlanner.Domain.Models;
-using TripPlanner.Domain.Services;
 using TripPlanner.Domain.Services.Authentication;
+using TripPlanner.Domain.Services.Data;
 
 namespace TripPlanner.Domain.Tests.Services.AuthenticationServices
 {

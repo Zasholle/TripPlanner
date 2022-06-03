@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TripPlanner.Domain.Models;
-using TripPlanner.Domain.Services;
+using TripPlanner.Domain.Services.Data;
 using TripPlanner.EntityFramework.Services.Common;
 
 namespace TripPlanner.EntityFramework.Services
@@ -54,14 +54,14 @@ namespace TripPlanner.EntityFramework.Services
         {
             await using var context = _contextFactory.CreateDbContext();
 
-            return (await context.Users.SingleOrDefaultAsync(u => u.Username == username));
+            return await context.Users.SingleOrDefaultAsync(u => u.Username == username);
         }
 
         public async Task<User?> GetByEmail(string email)
         {
             await using var context = _contextFactory.CreateDbContext();
 
-            return (await context.Users.SingleOrDefaultAsync(u => u.Email == email));
+            return await context.Users.SingleOrDefaultAsync(u => u.Email == email);
         }
     }
 }

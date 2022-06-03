@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TripPlanner.Domain.Models;
-using TripPlanner.Domain.Services;
 using TripPlanner.Domain.Services.Authentication;
+using TripPlanner.Domain.Services.Data;
 using TripPlanner.EntityFramework.Services;
 
 namespace TripPlanner.WPF.HostBuilders
