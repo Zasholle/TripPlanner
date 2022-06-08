@@ -14,6 +14,7 @@ namespace TripPlanner.WPF.HostBuilders
                 services.AddSingleton<IAuthenticator, Authenticator>();
                 services.AddSingleton<UserStore>();
                 services.AddSingleton<NavigationStore>();
+                services.AddSingleton<HouseStore>();
             });
 
             return host;

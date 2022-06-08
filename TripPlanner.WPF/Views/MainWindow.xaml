@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:TripPlanner.WPF.Views"
         xmlns:components="clr-namespace:TripPlanner.WPF.Components"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="TripPlanner" Height="600" Width="800" Icon="../img/logo.png">
     <ContentControl 
         Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>

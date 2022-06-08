@@ -5,6 +5,8 @@ using TripPlanner.Domain.Models;
 using TripPlanner.Domain.Services.Authentication;
 using TripPlanner.Domain.Services.Data;
 using TripPlanner.EntityFramework.Services;
+using TripPlanner.WPF.Services;
+using HouseDataService = TripPlanner.EntityFramework.Services.HouseDataService;
 
 namespace TripPlanner.WPF.HostBuilders
 {
@@ -18,6 +20,9 @@ namespace TripPlanner.WPF.HostBuilders
                 services.AddSingleton<IAuthenticationService, AuthenticationService>();
                 services.AddSingleton<IDataService<User>, UserDataService>();
                 services.AddSingleton<IUserService, UserDataService>();
+                services.AddSingleton<IDataService<House>, HouseDataService>();
+                services.AddSingleton<IHouseService, HouseDataService>();
+                services.AddSingleton<IHouseDataService, HouseService>();
             });
 
             return host;

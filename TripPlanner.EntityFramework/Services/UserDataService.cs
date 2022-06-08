@@ -31,12 +31,12 @@ namespace TripPlanner.EntityFramework.Services
             return await _nonQueryDataService.Delete(id);
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<User?> GetById(int id)
         {
             await using var context = _contextFactory.CreateDbContext();
 
             var entity = 
-                context.Users.FirstOrDefault((e) => e.Id == id)!;
+                context.Users.FirstOrDefault((e) => e.Id == id);
             
             return entity;
         }

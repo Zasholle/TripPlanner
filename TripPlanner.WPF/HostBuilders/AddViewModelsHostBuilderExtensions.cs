@@ -16,11 +16,21 @@ namespace TripPlanner.WPF.HostBuilders
             {
                 services.AddSingleton(CreateLoginNavigationService);
 
-                services.AddTransient(s => new HomeViewModel(CreateLoginNavigationService(s)));
-                services.AddTransient(s => new RegistryViewModel(s.GetRequiredService<IAuthenticator>(), CreateLoginNavigationService(s)));
+                services.AddTransient(s => 
+                    new HomeViewModel(
+                        s.GetRequiredService<IHouseDataService>(),
+                        CreateLoginNavigationService(s)));
+
+                services.AddTransient(s => 
+                    new RegistryViewModel(
+                        s.GetRequiredService<IAuthenticator>(), 
+                        CreateLoginNavigationService(s)));
+
                 services.AddTransient(s => new LoginViewModel(
                     s.GetRequiredService<IAuthenticator>(),
-                    CreateHomeNavigationService(s), CreateRegistryNavigationService(s)));
+                    CreateHomeNavigationService(s), 
+                    CreateRegistryNavigationService(s)));
+
                 services.AddTransient<MainViewModel>();
             });
 
@@ -52,8 +62,6 @@ namespace TripPlanner.WPF.HostBuilders
         private static NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
             return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),
-                CreateHomeNavigationService(serviceProvider),
-                CreateRegistryNavigationService(serviceProvider),
                 CreateLoginNavigationService(serviceProvider));
         }
     }

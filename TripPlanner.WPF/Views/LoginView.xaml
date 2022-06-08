@@ -27,20 +27,20 @@
             Grid.Row="0"
             HorizontalAlignment="Left"
             FontSize="28"
-            Text="Login" />
+            Text="Вход" />
 
         <StackPanel
             Grid.Row="1" 
             Margin="0 20 0 0">
             <StackPanel>
                 <TextBlock 
-                    Text="Username" />
+                    Text="Имя пользователя" />
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel
                 Margin="0 10 0 0">
-                <TextBlock Text="Password" />
+                <TextBlock Text="Пароль" />
                 <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
@@ -52,14 +52,14 @@
             HorizontalAlignment="Left"
             Command="{Binding LoginCommand}"
             IsDefault="True"
-            Content="Login" />
+            Content="Войти" />
         <Button
             Grid.Row="2"
             Margin="0 20 15 0"
             Padding="5 2"
             HorizontalAlignment="right"
             Command="{Binding RegisterCommand}"
-            Content="Register" />
+            Content="Регистрация" />
         <TextBlock 
             Grid.Row="3" 
             Margin="0 10 0 0"
