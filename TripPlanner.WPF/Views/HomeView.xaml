@@ -102,6 +102,10 @@
                     </Border>
                     <StackPanel
                         Margin="10 5">
+                        <ListBox
+                            FontSize="16"
+                            ItemsSource="{Binding Locations}">
+                        </ListBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>

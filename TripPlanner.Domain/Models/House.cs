@@ -8,6 +8,5 @@
         public int Beds { get; set; }
         public double Price { get; set; }
         public int Area { get; set; }
-        public bool Kitchen { get; set; }
     }
 }

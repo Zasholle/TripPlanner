@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TripPlanner.Domain.Models;
 using TripPlanner.WPF.Commands;
@@ -9,11 +10,18 @@ namespace TripPlanner.WPF.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         private ObservableCollection<House>? _houses;
+        private IEnumerable<string>? _locations;
 
         public ObservableCollection<House>? Houses
         {
             get => _houses;
             set => Set(ref _houses, ref value);
+        }
+
+        public IEnumerable<string>? Locations
+        {
+            get => _locations;
+            set => Set(ref _locations, ref value);
         }
 
         public ICommand LogOutCommand { get; }

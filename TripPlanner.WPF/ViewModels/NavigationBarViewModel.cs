@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using TripPlanner.WPF.Commands;
 using TripPlanner.WPF.Services;
 using TripPlanner.WPF.Stores;
@@ -31,7 +32,7 @@ namespace TripPlanner.WPF.ViewModels
         {
             _userStore.CurrentUserChanged -= OnCurrentUserChanged;
 
-            base.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

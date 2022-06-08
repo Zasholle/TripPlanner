@@ -23,6 +23,9 @@ namespace TripPlanner.WPF.Commands
             {
                 await _houseDataService.LoadData();
                 _homeViewModel.Houses = _houseDataService.Houses;
+
+                await _houseDataService.GetLocationList();
+                _homeViewModel.Locations = _houseDataService.Locations;
             }
             catch (Exception ex)
             {
