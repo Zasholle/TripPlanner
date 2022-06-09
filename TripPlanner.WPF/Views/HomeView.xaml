@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             MinHeight="450" MinWidth="800">
     <behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="Loaded">
             <behaviors:InvokeCommandAction Command="{Binding LoadCommand}" />
@@ -22,7 +23,7 @@
         <Border
             Grid.Column="0"
             BorderBrush="Black" 
-            BorderThickness="2"
+            BorderThickness="0"
             Margin="0 0 5 0"
             HorizontalAlignment="Left">
             <Grid>
@@ -45,51 +46,71 @@
                     Grid.Row="1">
                     <StackPanel
                         Margin="10 5"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal" 
+                        Width="200">
                         <TextBlock
                             Text="Площадь:"
                             FontSize="18"
-                            Margin="0 0 10 0" Width="45"/>
+                            Margin="0 0 10 0"
+                            Width="80"/>
                         <TextBox
-                            Width="35" />
+                            Width="35" 
+                            Text="{Binding MinArea}"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
                         <TextBlock
                             Text="до"
                             FontSize="18"
                             Margin="10 0"/>
                         <TextBox
-                            Width="35" />
+                            Width="35" 
+                            Text="{Binding MaxArea}"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel
                         Margin="10 5"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal" Width="200">
                         <TextBlock
-                            Text="Спальных мест:"
+                            Text="Кровати:"
                             FontSize="18"
-                            Margin="0 0 10 0" Width="45"/>
+                            Margin="0 0 10 0" Width="80"/>
                         <TextBox
-                            Width="35" />
+                            Width="35"
+                            Text="{Binding MinBeds}"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
                         <TextBlock
                             Text="до"
                             FontSize="18"
                             Margin="10 0"/>
                         <TextBox
-                            Width="35" />
+                            Width="35"
+                            Text="{Binding MaxBeds}"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel
                         Margin="10 5"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal" Width="200">
                         <TextBlock
                             Text="Цена:"
                             FontSize="18"
-                            Margin="0 0 10 0" Width="45"/>
+                            Margin="0 0 10 0" Width="80"/>
                         <TextBox
-                            Width="35" />
+                            Width="35"
+                            Text="{Binding MinPrice}"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
                         <TextBlock
                             Text="до"
                             FontSize="18"
                             Margin="10 0"/>
                         <TextBox
-                            Width="35" />
+                            Width="35"
+                            Text="{Binding MaxPrice}"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </StackPanel>
                     <Border
                         BorderBrush="Black"
@@ -105,8 +126,32 @@
                         <ListBox
                             FontSize="16"
                             ItemsSource="{Binding Locations}">
+
                         </ListBox>
                     </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Grid.Column="0"
+                            Content="Поиск"
+                            Padding="15"
+                            Margin="10,5,0,5"
+                            FontSize="16" 
+                            Command="{Binding SearchCommand}"
+                            />
+                        <Button
+                            Margin="57,5,-46,5"
+                            Grid.Column="1"
+                            Padding="15"
+                            Content="Очистить"
+                            Command="{Binding ClearCommand}"
+                            FontSize="16" 
+/>
+                    </Grid>
                 </StackPanel>
             </Grid>
         </Border>
@@ -116,33 +161,77 @@
         <Border
             Grid.Column="1"
             BorderBrush="Black"
-            BorderThickness="2"
-            Margin="5 0 0 0">
+            BorderThickness="2">
             <Grid>
-                <ListView 
+                <ListView
                     ItemsSource="{Binding Houses}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="3" />
+                            <UniformGrid 
+                                Columns="3" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel 
-                                Margin="5">
-                                <Image 
-                                    Width="100" 
-                                    Height="75"
+                            <Grid
+                                Margin="10, 15">
+                                <Grid.InputBindings>
+                                    <MouseBinding
+                                        Gesture="LeftClick"
+                                        Command="{Binding DataContext.Activate, 
+                                        RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding}"/>
+                                </Grid.InputBindings>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Image
+                                    Grid.Row="0"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    MaxHeight="150"
                                     Source="../img/house.png"/>
-                                <TextBlock 
+                                <TextBlock
+                                    Grid.Row="1"
                                     FontSize="16" 
                                     Text="{Binding Locality.Name}"
                                     HorizontalAlignment="Center" />
-                                <TextBlock 
+                                <TextBlock
+                                    Grid.Row="2"
                                     FontSize="16" 
                                     Text="{Binding Address}"
                                     HorizontalAlignment="Center" />
-                            </StackPanel>
+                                <StackPanel
+                                    Grid.Row="3"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="Цена:"
+                                        FontSize="16"/>
+                                    <TextBlock
+                                        Text="{Binding Price}" 
+                                        FontSize="16"
+                                        Margin="0, 0, 5, 0"/>
+                                    <TextBlock
+                                        Text="Площадь:"
+                                        FontSize="16"/>
+                                    <TextBlock
+                                        Text="{Binding Area}" 
+                                        FontSize="16"
+                                        Margin="0, 0, 5, 0"/>
+                                    <TextBlock
+                                        Text="Кроватей:"
+                                        FontSize="16"/>
+                                    <TextBlock
+                                        Text="{Binding Beds}" 
+                                        FontSize="16"/>
+                                </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ListView>

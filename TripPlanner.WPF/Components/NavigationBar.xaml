@@ -9,7 +9,9 @@
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="AliceBlue" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -34,23 +36,21 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
     <Grid
-        MaxWidth="1000"
-        Margin="20 10">
+        Margin="20, 0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock
             Grid.Column="0"
-            FontSize="18"
+            FontSize="24"
             FontFamily="Arial"
-            Foreground="AliceBlue"/>
+            Foreground="Black"
+            VerticalAlignment="Center"/>
         <Button
-            Grid.Column="4"
+            Grid.Column="1"
             Command="{Binding LogoutCommand}"
             Content="Выйти"
             Margin="10 0 0 0"
